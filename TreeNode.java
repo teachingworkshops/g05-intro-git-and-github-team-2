@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class TreeNode {
     private List<TreeNode> children;
     private String text;
@@ -11,7 +14,7 @@ public class TreeNode {
         children.add(child);
     }
 
-    public string getText(){
+    public String getText(){
         return this.text;
     }
 
