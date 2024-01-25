@@ -1,21 +1,21 @@
 public class TreeNode {
-    private TreeNode left;
-    private TreeNode right;
+    private List<TreeNode> children;
     private String text;
 
     public TreeNode(String text) {
         this.text = text;
+        this.children = new ArrayList<>();
     }
 
-    public TreeNode left() {
-        return this.left;
+    public void addChild(TreeNode child) {
+        children.add(child);
     }
 
-    public TreeNode right() {
-        return this.right;
-    }
-
-    public String getAdvNode() {
+    public string getText(){
         return this.text;
+    }
+
+    public List<TreeNode> getChildren(){
+        return this.children;
     }
 }
