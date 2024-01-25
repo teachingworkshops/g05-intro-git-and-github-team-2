@@ -1,10 +1,13 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class TreeNode {
     private List<TreeNode> adjacent;
     private String text;
 
     public TreeNode(String text) {
         this.text = text;
-        this.children = new ArrayList<>();
+        this.adjacent = new ArrayList<>();
     }
 
     public void addAdjacent(TreeNode node) {
@@ -17,6 +20,6 @@ public class TreeNode {
     }
 
     public List<TreeNode> getChildren(){
-        return this.children;
+        return this.adjacent;
     }
 }
