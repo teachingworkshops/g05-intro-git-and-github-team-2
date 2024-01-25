@@ -1,5 +1,5 @@
 public class TreeNode {
-    private List<TreeNode> children;
+    private List<TreeNode> adjacent;
     private String text;
 
     public TreeNode(String text) {
@@ -7,11 +7,12 @@ public class TreeNode {
         this.children = new ArrayList<>();
     }
 
-    public void addChild(TreeNode child) {
-        children.add(child);
+    public void addAdjacent(TreeNode node) {
+        adjacent.add(node);
+        node.adjacent.add(this);
     }
 
-    public string getText(){
+    public String getText(){
         return this.text;
     }
 
