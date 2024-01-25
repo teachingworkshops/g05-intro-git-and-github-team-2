@@ -4,7 +4,7 @@ public class Player {
 
     public Player(String name) {
         this.name = name;
-        hurt = false;
+        this.hurt = false;
     }
 
     public String getName() {
@@ -13,5 +13,9 @@ public class Player {
 
     public boolean hurt() {
         return this.hurt;
+    }
+
+    public void injure() {
+        this.hurt = true;
     }
 }
