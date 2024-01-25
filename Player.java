@@ -10,4 +10,8 @@ public class Player {
     public String getName() {
         return this.name;
     }
+
+    public boolean hurt() {
+        return this.hurt;
+    }
 }
