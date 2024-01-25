@@ -28,4 +28,8 @@ public class Player {
     public void endFight() {
         this.inCombat = false;
     }
+
+    public boolean combatState(){
+        return this.inCombat;
+    }
 }

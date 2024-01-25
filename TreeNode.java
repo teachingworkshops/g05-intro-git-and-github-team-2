@@ -4,6 +4,7 @@ import java.util.List;
 public class TreeNode {
     private List<TreeNode> adjacent;
     private String text;
+    private Player player;
 
     public TreeNode(String text) {
         this.text = text;
@@ -12,7 +13,9 @@ public class TreeNode {
 
     public void addAdjacent(TreeNode node) {
         adjacent.add(node);
-        node.adjacent.add(this);
+        if (player.combatState() == false){
+            node.adjacent.add(this);
+        }
     }
 
     public String getText(){
