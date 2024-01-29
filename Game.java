@@ -3,10 +3,17 @@ import java.util.Scanner;
 public class Game {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
+
+        // Create player
+        System.out.print("Enter a name for your player: ");
+        Player p = new Player(s.nextLine());
+        System.out.print("\n");
+
+        // Run game
         TreeNode curr = buildTree();
 
         while(curr != null) {
-            curr = turn(curr, s);
+            curr = turn(p, curr, s);
         }
 
         System.out.println("Game Over!");
@@ -26,11 +33,12 @@ public class Game {
 
     /*
      * Player's turn; player will choose an option, and we will update the current node based on the decision
+     * @param p The player
      * @param curr The node we are currently at
      * @param s Scanner for user input
      * @return Result node
      */
-    public static TreeNode turn(TreeNode curr, Scanner s) {
+    public static TreeNode turn(Player p, TreeNode curr, Scanner s) {
         if(curr.getChildren().size() == 0) {
             return null;
         }
