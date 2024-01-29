@@ -6,7 +6,7 @@ public class Game {
         TreeNode curr = buildTree();
 
         while(curr != null) {
-            turn(curr, s);
+            curr = turn(curr, s);
         }
 
         System.out.println("Game Over!");
