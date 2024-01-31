@@ -8,23 +8,23 @@ public class Game {
     public static TreeNode root = new TreeNode("You wake up in a labyrinth-like maze with no exit in sight. Enter 1 to turn left, 2 to turn right.");
     public static TreeNode toSkeleton = new TreeNode("You turn left and enter a room. You see a skeleton in the corner. It has a shining red ring on its finger and a dagger in its other hand. Enter 1 to take the ring, 2 to continue forward and ignore it.");
     public static TreeNode tryTakeRing = new TreeNode("You walk up to the skeleton and attempt to take the ring. The skeleton suddenly awakens and raises its dagger, cutting you across your right shoulder. You are now injured. Enter 1 to attack the skeleton, 2 to continue past it.");
-    public static TreeNode attackSkeleton = new TreeNode("You attack the skeleton. It crumbles under your blow, turning to dust. Only the red ring remains on the ground.");
+    public static TreeNode attackSkeleton = new TreeNode("You attack the skeleton. It crumbles under your blow, turning to dust. Only the red ring remains on the ground. Press 1 to collect it and continue forward.");
     public static TreeNode takeRing = new TreeNode("You grab the ring from the ground. You will now have the ability to cast a fireball during a fight. Enter 1 to continue");
     public static TreeNode moveToStatueRoom = new TreeNode("You enter a room containing three different statues. The first is a dolphin, the second an eagle, and the third a snake. Each statue has a button in front of it, and a large lever sits to the right of the statues.");
     public static TreeNode leverIncorrect = new TreeNode("Incorrect! A trap activates and you are killed by its arrow.");
     public static TreeNode leverCorrect = new TreeNode("You solved the puzzle! The middle statue turns and reveals a bright red healing potion. You are no longer injured! Enter 1 to continue");
     public static TreeNode backToStart = new TreeNode("The next path leads you back to the start of the labyrinth. Enter 1 to go right, enter 2 to go left.");
     public static TreeNode toChest = new TreeNode("You enter a room that is completely empty except for a chest in the center of the room. Enter 1 to open the chest, 2 to kick the chest");
-    public static TreeNode openChest = new TreeNode("The chest was a mimic! It leaps and attacks you. You are now injured. Enter 1 to continue");
-    public static TreeNode hitChest = new TreeNode("The chest falls back to reveal it was a mimic, but the kick broke it completely, leaving an orange potion within the scattered pieces of wood. Gain one potion of strength. Enter 1 to turn around and continue down the hallway.");
+    public static TreeNode openChest = new TreeNode("The chest was a mimic! It leaps and attacks you. You are now injured. Enter 1 to kick it.");
+    public static TreeNode hitChest = new TreeNode("The kick shatters the mimic, leaving an orange potion within the scattered pieces of wood. Gain one potion of strength. Enter 1 to turn around and continue down the hallway.");
     public static TreeNode door = new TreeNode("You see a set of iron double doors decorated with skulls, and both with iron handles. Enter 1 to open the doors and continue.");
-    public static TreeNode EnterBossRoom = new TreeNode("You see a giant minotaur standing on an iron throne, with an enormous axe standing next to him. If you have a fireball attack and wish to use it, enter 1. If you have a potion of strength, enter 2 to use it and attack the minotaur. Enter 3 to continue by attacking without modifications.");
+    public static TreeNode EnterBossRoom = new TreeNode("You see a giant minotaur standing on an iron throne, with an enormous axe standing next to him.  Enter 1 to continue by attacking without modifications. If you have a potion of strength, enter 2 to use it and attack the minotaur. If you have a fireball attack and wish to use it, enter 3.");
     public static TreeNode ringOfFireball = new TreeNode("The minotaur has a weakness to fire, and your fireball catches him off guard and burns him to a crisp. Enter 1 to proceed.");
     public static TreeNode attackEmpower = new TreeNode("Your sword is filled with orange light. Your strike cuts through the minotaur's axe and severs it in two. Enter 1 to proceed.");
     public static TreeNode attackNotEmpower = new TreeNode("Your swing is too quick for the minotaur and you are able to injure it. However, it strikes back and you are injured. Enter 1 to try to run, 2 to attack again.");
     public static TreeNode tryToRun = new TreeNode("You try to run, but the minotaur attacks you again.");
     public static TreeNode attackAgain = new TreeNode("Although severely wounded, you are able to defeat the minotaur. Enter 1 to proceed");
-    public static TreeNode winFight = new TreeNode("Directly behind the throne is a chest filled with gold and a door that leads to the outside. You win!");
+    public static TreeNode winFight = new TreeNode("Directly behind the throne is a chest filled with gold and a door that leads to the outside. ");
 
 
     public static void main(String[] args) {
@@ -40,14 +40,17 @@ public class Game {
         TreeNode curr = root;
 
         while(curr != null) {
+            System.out.println(curr.getText());
+            
             if(curr.equals(moveToStatueRoom)) {
-                System.out.println(moveToStatueRoom.getText());
+                //System.out.println(moveToStatueRoom.getText());
                 if(playPuzzle(s) == 0) {
                     curr = leverIncorrect;
                     break;
                 }
                 else {
                     curr = leverCorrect;
+                    System.out.println(curr.getText());
                 }
             }
             if(curr == takeRing){
@@ -63,8 +66,12 @@ public class Game {
             if(curr == EnterBossRoom && p.getEmpowered() == false){
                 EnterBossRoom.removeAdjacent(attackEmpower);
             }
+            if(curr == winFight){
+                System.out.print("Congratulations, "+p.getName()+", you win!\n");
+            }
            
             curr = turn(p, curr, s);
+            
         }
 
         if(curr == leverIncorrect) {
@@ -121,18 +128,18 @@ public class Game {
         // Chest Room
         toChest.addAdjacent(openChest);
         toChest.addAdjacent(hitChest);
+        openChest.addAdjacent(hitChest);
 
         // End Chest
-        openChest.addAdjacent(door);
+        //openChest.addAdjacent(door);
         hitChest.addAdjacent(door);
 
         door.addAdjacent(EnterBossRoom);
 
         // Boss
-      
-        EnterBossRoom.addAdjacent(ringOfFireball);
-        EnterBossRoom.addAdjacent(attackEmpower);
         EnterBossRoom.addAdjacent(attackNotEmpower);  
+        EnterBossRoom.addAdjacent(attackEmpower);
+        EnterBossRoom.addAdjacent(ringOfFireball);
         
         // Fireball
         ringOfFireball.addAdjacent(winFight);
@@ -147,11 +154,6 @@ public class Game {
 
         // Attack again
         attackAgain.addAdjacent(winFight);
-        
-
-      
-
-     
 
      
     }
@@ -225,7 +227,7 @@ public class Game {
             return null;
         }
 
-        System.out.println(curr.getText());
+        //System.out.println(curr.getText());
 
         if(curr.getText().contains("injured")) {
             if(!curr.getText().contains("no longer")) {
