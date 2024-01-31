@@ -21,6 +21,10 @@ public class Player {
         this.hurt = true;
     }
 
+    public void heal() {
+        this.hurt = false;
+    }
+
     public void fight() {
         this.inCombat = true;
     }

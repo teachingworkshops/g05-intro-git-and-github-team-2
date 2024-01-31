@@ -1,6 +1,5 @@
 import java.util.Scanner;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class Game {
@@ -8,7 +7,7 @@ public class Game {
     // Create all nodes first
     public static TreeNode root = new TreeNode("You wake up in a labyrinth-like maze with no exit in sight. Enter 1 to turn left, 2 to turn right.");
     public static TreeNode toSkeleton = new TreeNode("You turn left and enter a room. You see a skeleton in the corner. It has a shining red ring on its finger and a dagger in its other hand. Enter 1 to take the ring, 2 to continue forward and ignore it.");
-    public static TreeNode tryTakeRing = new TreeNode("You walk up to the skeleton and attempt to take the ring. The skeleton suddenly awakens and raises its dagger, cutting you across your right shoulder. Enter 1 to attack the skeleton, 2 to continue past it.");
+    public static TreeNode tryTakeRing = new TreeNode("You walk up to the skeleton and attempt to take the ring. The skeleton suddenly awakens and raises its dagger, cutting you across your right shoulder. You are now injured. Enter 1 to attack the skeleton, 2 to continue past it.");
     public static TreeNode attackSkeleton = new TreeNode("You attack the skeleton. It crumbles under your blow, turning to dust. Only the red ring remains on the ground.");
     public static TreeNode takeRing = new TreeNode("You grab the ring from the ground. You will now have the ability to cast a fireball during a fight. Enter 1 to continue");
     public static TreeNode moveToStatueRoom = new TreeNode("You enter a room containing three different statues. The first is a dolphin, the second an eagle, and the third a snake. Each statue has a button in front of it, and a large lever sits to the right of the statues.");
@@ -162,6 +161,21 @@ public class Game {
         }
 
         System.out.println(curr.getText());
+
+        if(curr.getText().contains("injured")) {
+            if(!curr.getText().contains("no longer")) {
+                if(p.hurt()) {
+                    System.out.println("You have been fatally wounded.");
+                    return null;
+                }
+    
+                p.injure();
+            }
+            else {
+                p.heal();
+            }
+        }
+
         int choice = s.nextInt();
 
         while(choice < 1 || choice > curr.getChildren().size()) {
