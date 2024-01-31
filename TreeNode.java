@@ -10,11 +10,11 @@ public class TreeNode {
         this.adjacent = new ArrayList<>();
     }
 
-    public void addAdjacent(TreeNode node, boolean combat) {
+    public void addAdjacent(TreeNode node) {
         adjacent.add(node);
-        if (combat == false){
+        /*if (combat == false){
             node.adjacent.add(this);
-        }
+        }*/
     }
 
     public String getText(){
