@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class Game {
@@ -30,7 +31,7 @@ public class Game {
         while(curr != null) {
             if(curr.equals(moveToStatueRoom)) {
                 System.out.println(moveToStatueRoom.getText());
-                if(playPuzzle() == 0) {
+                if(playPuzzle(s) == 0) {
                     curr = leverIncorrect;
                     break;
                 }
@@ -90,10 +91,46 @@ public class Game {
         return root;
     }
 
-    public static int playPuzzle() {
+    public static int playPuzzle(Scanner s) {
         int left = 0;
         int mid = 1;
         int right = 2;
+        Queue<Integer> qLeft = new PriorityQueue<Integer>();
+        Queue<Integer> qMid = new PriorityQueue<Integer>();
+        Queue<Integer> qRight = new PriorityQueue<Integer>();
+        int choice = 0;
+
+        // Set queues
+        qLeft.offer(1);
+        qLeft.offer(2);
+
+        qMid.offer(2);
+        qMid.offer(0);
+
+        qRight.offer(0);
+        qRight.offer(1);
+
+        while(choice != 4) {
+            System.out.println("Press 1 for button in front of left statue, 2 for middle, 3 for right. To pull the lever, press 4");
+            choice = s.nextInt();
+
+            if(choice == 1) {
+                qLeft.offer(left);
+                left = qLeft.poll();
+            }
+            else if(choice == 2) {
+                qMid.offer(mid);
+                mid = qMid.poll();
+            }
+            else if(choice == 3) {
+                qRight.offer(right);
+                right = qRight.poll();
+            }
+        }
+
+        if(left == mid && left == right && mid == right) {
+            return 1;
+        }
 
         return 0;
     }
