@@ -17,7 +17,14 @@ public class Game {
     public static TreeNode toChest = new TreeNode("You enter a room that is completely empty except for a chest in the center of the room. Enter 1 to open the chest, 2 to kick the chest");
     public static TreeNode openChest = new TreeNode("The chest was a mimic! It leaps and attacks you. You are now injured. Enter 1 to continue");
     public static TreeNode hitChest = new TreeNode("The chest falls back to reveal it was a mimic, but the kick broke it completely, leaving an orange potion within the scattered pieces of wood. Gain one potion of strength. Enter 1 to turn around and continue down the hallway.");
+    public static TreeNode door = new TreeNode("You see a set of iron double doors decorated with skulls, and both with iron handles. Enter 1 to open the doors and continue.");
     public static TreeNode EnterBossRoom = new TreeNode("You see a giant minotaur standing on an iron throne, with an enormous axe standing next to him.");
+    public static TreeNode ringOfFireball = new TreeNode("The minotaur has a weakness to fire, and your fireball catches him off guard and burns him to a crisp. Enter 1 to proceed.");
+    public static TreeNode attackEmpower = new TreeNode("Your sword is filled with orange light. Your strike cuts through the minotaur's axe and severs it in two. Enter 1 to proceed.");
+    public static TreeNode attackNotEmpower = new TreeNode("Your swing is too quick for the minotaur and you are able to injure it. However, it strikes back and you are injured. Enter 1 to try to run, 2 to attack again.");
+    public static TreeNode tryToRun = new TreeNode("You try to run, but the minotaur attacks you again.");
+    public static TreeNode attackAgain = new TreeNode("Although severely injured, you are able to defeat the minotaur. Enter 1 to proceed");
+    public static TreeNode winFight = new TreeNode("Directly behind the throne is a chest filled with gold and a door that leads to the outside. You win!");
 
 
     public static void main(String[] args) {
@@ -93,6 +100,35 @@ public class Game {
 
         // Back to Start
         backToStart.addAdjacent(toChest);
+        backToStart.addAdjacent(door);
+
+        // Chest Room
+        toChest.addAdjacent(openChest);
+        toChest.addAdjacent(hitChest);
+
+        // End Chest
+        openChest.addAdjacent(door);
+        hitChest.addAdjacent(door);
+
+        door.addAdjacent(EnterBossRoom);
+
+        // Boss
+        EnterBossRoom.addAdjacent(ringOfFireball);
+        EnterBossRoom.addAdjacent(attackEmpower);
+        EnterBossRoom.addAdjacent(attackNotEmpower);
+
+        // Fireball
+        ringOfFireball.addAdjacent(winFight);
+
+        // Attack empower
+        attackEmpower.addAdjacent(winFight);
+
+        // Not empowered
+        attackNotEmpower.addAdjacent(tryToRun);
+        attackNotEmpower.addAdjacent(attackAgain);
+
+        // Attack again
+        attackAgain.addAdjacent(winFight);
     }
 
     /**
