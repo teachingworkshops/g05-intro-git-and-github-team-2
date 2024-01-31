@@ -16,7 +16,10 @@ public class TreeNode {
             node.adjacent.add(this);
         }*/
     }
-
+    public void removeAdjacent(TreeNode node) {
+        adjacent.remove(node);
+     
+    }
     public String getText(){
         return this.text;
     }

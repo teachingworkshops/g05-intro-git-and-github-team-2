@@ -3,14 +3,14 @@ public class Player {
     private boolean hurt;
     private boolean inCombat;
     private boolean isEmpowered;
-    private boolean hasEPotion;
+    private boolean hasRing;
 
     public Player(String name) {
         this.name = name;
         this.hurt = false;
         this.inCombat = false;
         this.isEmpowered = false;
-        this.hasEPotion = false;
+        this.hasRing = false;
     }
 
     public String getName() {
@@ -21,14 +21,19 @@ public class Player {
         return this.hurt;
     }
 
-    public boolean isEmpowered() {
+    public boolean getEmpowered() {
         return this.isEmpowered;
     }
 
-    public boolean isHasEPotion() {
-        return this.hasEPotion;
+    public boolean getRing() {
+        return this.hasRing;
     }
-
+    public void setRing(){
+        hasRing = true;
+    }
+    public void setEmpowered(){
+        isEmpowered = true;
+    }
     public void injure() {
         this.hurt = true;
     }

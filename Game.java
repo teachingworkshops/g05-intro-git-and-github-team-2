@@ -23,7 +23,7 @@ public class Game {
     public static TreeNode attackEmpower = new TreeNode("Your sword is filled with orange light. Your strike cuts through the minotaur's axe and severs it in two. Enter 1 to proceed.");
     public static TreeNode attackNotEmpower = new TreeNode("Your swing is too quick for the minotaur and you are able to injure it. However, it strikes back and you are injured. Enter 1 to try to run, 2 to attack again.");
     public static TreeNode tryToRun = new TreeNode("You try to run, but the minotaur attacks you again.");
-    public static TreeNode attackAgain = new TreeNode("Although severely injured, you are able to defeat the minotaur. Enter 1 to proceed");
+    public static TreeNode attackAgain = new TreeNode("Although severely wounded, you are able to defeat the minotaur. Enter 1 to proceed");
     public static TreeNode winFight = new TreeNode("Directly behind the throne is a chest filled with gold and a door that leads to the outside. You win!");
 
 
@@ -50,7 +50,20 @@ public class Game {
                     curr = leverCorrect;
                 }
             }
-
+            if(curr == takeRing){
+                p.setRing();
+                
+            }
+            if(curr == hitChest){
+                p.setEmpowered();
+            }
+            if(curr == EnterBossRoom && p.getRing() == false){
+                EnterBossRoom.removeAdjacent(ringOfFireball);
+            }
+            if(curr == EnterBossRoom && p.getEmpowered() == false){
+                EnterBossRoom.removeAdjacent(attackEmpower);
+            }
+           
             curr = turn(p, curr, s);
         }
 
@@ -79,6 +92,7 @@ public class Game {
 
         // Level 1 - right path (Chest)
         toChest.addAdjacent(openChest);
+        toChest.addAdjacent(hitChest);
 
         // Level 2 - Skeleton battle or statue
         tryTakeRing.addAdjacent(attackSkeleton);
@@ -94,7 +108,9 @@ public class Game {
 
         // Ring
         takeRing.addAdjacent(moveToStatueRoom);
+     
 
+        
         // Lever Correct
         leverCorrect.addAdjacent(backToStart);
 
@@ -113,22 +129,31 @@ public class Game {
         door.addAdjacent(EnterBossRoom);
 
         // Boss
+      
         EnterBossRoom.addAdjacent(ringOfFireball);
         EnterBossRoom.addAdjacent(attackEmpower);
-        EnterBossRoom.addAdjacent(attackNotEmpower);
-
+        EnterBossRoom.addAdjacent(attackNotEmpower);  
+        
         // Fireball
         ringOfFireball.addAdjacent(winFight);
-
+        
+         
         // Attack empower
-        attackEmpower.addAdjacent(winFight);
+        attackEmpower.addAdjacent(winFight); 
 
-        // Not empowered
+         // Not empowered
         attackNotEmpower.addAdjacent(tryToRun);
         attackNotEmpower.addAdjacent(attackAgain);
 
         // Attack again
         attackAgain.addAdjacent(winFight);
+        
+
+      
+
+     
+
+     
     }
 
     /**
@@ -223,20 +248,7 @@ public class Game {
             choice = s.nextInt();
         }
 
-        if(curr == EnterBossRoom) {
-            /*if(choice == 1 && !p.hasFireball) {
-                while(choice < 2 || choice > curr.getChildren().size()) {
-                    System.out.print("Please enter a valid choice");
-                    choice = s.nextInt();
-                }
-            }*/
-            if(choice == 2 && !p.isEmpowered()) {
-                while(choice != 3) {
-                    System.out.print("Please enter a valid choice");
-                    choice = s.nextInt();
-                }
-            }
-        }
+       
 
         return curr.getChildren().get(choice-1);
     }
