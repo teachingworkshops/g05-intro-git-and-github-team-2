@@ -13,9 +13,12 @@ public class Game {
     public static TreeNode moveToStatueRoom = new TreeNode("You enter a room containing three different statues. The first is a dolphin, the second an eagle, and the third a snake. Each statue has a button in front of it, and a large lever sits to the right of the statues.");
     public static TreeNode leverIncorrect = new TreeNode("Incorrect! A trap activates and you are killed by its arrow.");
     public static TreeNode leverCorrect = new TreeNode("You solved the puzzle! The middle statue turns and reveals a bright red healing potion. You are no longer injured! Enter 1 to continue");
-    public static TreeNode backToStart = new TreeNode("The next path leads you back to the start of the labyrinth. Enter 1 to continue");
-    public static TreeNode toChest = new TreeNode("You enter a room that is completely empty except for a chest in the center of the room. Enter 1 to open the chest, 2 to DO SOMETHING ELSE");
+    public static TreeNode backToStart = new TreeNode("The next path leads you back to the start of the labyrinth. Enter 1 to go right, enter 2 to go left.");
+    public static TreeNode toChest = new TreeNode("You enter a room that is completely empty except for a chest in the center of the room. Enter 1 to open the chest, 2 to kick the chest");
     public static TreeNode openChest = new TreeNode("The chest was a mimic! It leaps and attacks you. You are now injured. Enter 1 to continue");
+    public static TreeNode hitChest = new TreeNode("The chest falls back to reveal it was a mimic, but the kick broke it completely, leaving an orange potion within the scattered pieces of wood. Gain one potion of strength. Enter 1 to turn around and continue down the hallway.");
+    public static TreeNode EnterBossRoom = new TreeNode("You see a giant minotaur standing on an iron throne, with an enormous axe standing next to him.");
+
 
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
@@ -51,6 +54,7 @@ public class Game {
         System.out.println("Game Over!");
 
         s.close();
+      
     }
 
     /*
