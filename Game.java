@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -26,7 +27,8 @@ public class Game {
         System.out.print("\n");
 
         // Run game
-        TreeNode curr = buildTree();
+        buildTree();
+        TreeNode curr = root;
 
         while(curr != null) {
             if(curr.equals(moveToStatueRoom)) {
@@ -43,6 +45,10 @@ public class Game {
             curr = turn(p, curr, s);
         }
 
+        if(curr == leverIncorrect) {
+            System.out.println(leverIncorrect.getText());
+        }
+
         System.out.println("Game Over!");
 
         s.close();
@@ -52,10 +58,7 @@ public class Game {
      * Build game decision tree
      * @return The root of the tree
      */
-    public static TreeNode buildTree() {
-        TreeNode curr = root;
-        TreeNode prev = null;
-
+    public static void buildTree() {
         // Root level
         root.addAdjacent(toSkeleton);
         root.addAdjacent(toChest);
@@ -87,17 +90,20 @@ public class Game {
 
         // Back to Start
         backToStart.addAdjacent(toChest);
-
-        return root;
     }
 
+    /**
+     * Play statue puzzle
+     * @param s Scanner for input
+     * @return Integer based on result; 0 for loss, 1 for win
+     */
     public static int playPuzzle(Scanner s) {
         int left = 0;
         int mid = 1;
         int right = 2;
-        Queue<Integer> qLeft = new PriorityQueue<Integer>();
-        Queue<Integer> qMid = new PriorityQueue<Integer>();
-        Queue<Integer> qRight = new PriorityQueue<Integer>();
+        Queue<Integer> qLeft = new LinkedBlockingQueue<Integer>();
+        Queue<Integer> qMid = new LinkedBlockingQueue<Integer>();
+        Queue<Integer> qRight = new LinkedBlockingQueue<Integer>();
         int choice = 0;
 
         // Set queues
@@ -112,6 +118,7 @@ public class Game {
 
         while(choice != 4) {
             System.out.println("Press 1 for button in front of left statue, 2 for middle, 3 for right. To pull the lever, press 4");
+            System.out.printf("Current Layout: %s %s %s%n", statueType(left), statueType(mid), statueType(right));
             choice = s.nextInt();
 
             if(choice == 1) {
@@ -120,6 +127,7 @@ public class Game {
             }
             else if(choice == 2) {
                 qMid.offer(mid);
+                System.out.println(qMid.peek());
                 mid = qMid.poll();
             }
             else if(choice == 3) {
@@ -133,6 +141,12 @@ public class Game {
         }
 
         return 0;
+    }
+
+    public static String statueType(int val) {
+        if(val == 0) return "Dolphin";
+        if(val == 1) return "Eagle";
+        return "Snake";
     }
 
     /*
