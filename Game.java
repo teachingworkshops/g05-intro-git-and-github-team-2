@@ -18,7 +18,7 @@ public class Game {
     public static TreeNode openChest = new TreeNode("The chest was a mimic! It leaps and attacks you. You are now injured. Enter 1 to continue");
     public static TreeNode hitChest = new TreeNode("The chest falls back to reveal it was a mimic, but the kick broke it completely, leaving an orange potion within the scattered pieces of wood. Gain one potion of strength. Enter 1 to turn around and continue down the hallway.");
     public static TreeNode door = new TreeNode("You see a set of iron double doors decorated with skulls, and both with iron handles. Enter 1 to open the doors and continue.");
-    public static TreeNode EnterBossRoom = new TreeNode("You see a giant minotaur standing on an iron throne, with an enormous axe standing next to him.");
+    public static TreeNode EnterBossRoom = new TreeNode("You see a giant minotaur standing on an iron throne, with an enormous axe standing next to him. If you have a fireball attack and wish to use it, enter 1. If you have a potion of strength, enter 2 to use it and attack the minotaur. Enter 3 to continue by attacking without modifications.");
     public static TreeNode ringOfFireball = new TreeNode("The minotaur has a weakness to fire, and your fireball catches him off guard and burns him to a crisp. Enter 1 to proceed.");
     public static TreeNode attackEmpower = new TreeNode("Your sword is filled with orange light. Your strike cuts through the minotaur's axe and severs it in two. Enter 1 to proceed.");
     public static TreeNode attackNotEmpower = new TreeNode("Your swing is too quick for the minotaur and you are able to injure it. However, it strikes back and you are injured. Enter 1 to try to run, 2 to attack again.");
@@ -220,6 +220,22 @@ public class Game {
 
         while(choice < 1 || choice > curr.getChildren().size()) {
             System.out.println("Please enter a valid choice.");
+            choice = s.nextInt();
+        }
+
+        if(curr == EnterBossRoom) {
+            /*if(choice == 1 && !p.hasFireball) {
+                while(choice < 2 || choice > curr.getChildren().size()) {
+                    System.out.print("Please enter a valid choice");
+                    choice = s.nextInt();
+                }
+            }*/
+            if(choice == 2 && !p.isEmpowered()) {
+                while(choice != 3) {
+                    System.out.print("Please enter a valid choice");
+                    choice = s.nextInt();
+                }
+            }
         }
 
         return curr.getChildren().get(choice-1);
