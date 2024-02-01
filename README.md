@@ -10,6 +10,18 @@ You find yourself trapped in the middle of a maze full of mysteries, items, and 
 
 ## INSTALLATION AND EXECUTION
 
+Disclaimer: You must have at least Java Version 17 installed on your machine to run this game. To install:
+
+1. Download the version from https://www.oracle.com/java/technologies/downloads/
+2. Follow installation instructions.
+3. You will need to add the JDK bin directory as a system environment variable. To do this, first locate the bin file for your Java version and copy the path (once Java is installed, it should be located in C:\Program Files\Java on Windows)
+4. Search for "Environment Variables" in your Windows search bar and click "Edit the System Environment Variables"
+5. Select "Environment Variables"
+6. Under the System Environment Variables, double click the "Path" variable to edit.
+7. Paste the path to the bin file and click OK.
+8. Click OK to exit the edit panel.
+9. You can verify you are running the correct version by opening the command line and running the command java -version.
+
 Once on the GitHub repository:
 1. Click on the green "<> Code" button.
 2. Click on "Download ZIP."
