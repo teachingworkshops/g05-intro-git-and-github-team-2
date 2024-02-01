@@ -14,10 +14,10 @@ Once on the GitHub repository:
 1. Click on the green "<> Code" button.
 2. Click on "Download ZIP."
 3. Go to Downloads.
-4. Right-click on the file "g05-intro-git-and-github-team-2-main."
+4. Right-click on the file "g05-intro-git-and-github-team-2-main.zip"
 5. Extract the ZIP file
 6. Choose the extracted file location.
-7. Go inside the extracted folder and find "g05-intro-git-and-github-team-2"
+7. Go inside the extracted folder and find "g05-intro-git-and-github-team-2.jar"
 8. Right-click the file.
 9. Click on "Properties."
 10. Under the "General" tab, copy the text next to "Location."
