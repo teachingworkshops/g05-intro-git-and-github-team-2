@@ -41,6 +41,8 @@ public class Game {
     
         while(curr != null) {
             System.out.println(curr.getText());
+            if(s.hasNextInt()){
+                
             
             if(curr.equals(moveToStatueRoom)) {
                 //System.out.println(moveToStatueRoom.getText());
@@ -72,7 +74,12 @@ public class Game {
            
             
             curr = turn(p, curr, s);
-            
+        }
+        else{
+            System.out.println("Invalid Input: Please Enter an Integer.");
+            s.nextLine();
+            continue;
+        }
         }
 
         if(curr == leverIncorrect) {
