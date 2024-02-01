@@ -11,20 +11,20 @@ You find yourself trapped in the middle of a maze full of mysteries, items, and 
 ## INSTALLATION AND EXECUTION
 
 Once on the GitHub repository:
-	1. Click on the green "<> Code" button.
-	2. Click on "Download ZIP."
-	3. Go to Downloads.
-	4. Right-click on the file "g05-intro-git-and-github-team-2-main."
-	5. Click on "Extract All."
-	6. Choose the extracted file location.
-	7. Go to the extracted file "g05-intro-git-and-github-team-2-main."
-	8. Right-click the file.
-	9. Click on "Properties."
-	10. Under the "General" tab, copy the text next to "Location."
-	11. Open the Command Line.
-	12. Type (without double quotes): "cd <text you copied from earlier>."
-	13. Lastly, type (without double quotes): "java -jar g05-intro-git-and-github-team-2.jar."
-	14. Enjoy!
+1. Click on the green "<> Code" button.
+2. Click on "Download ZIP."
+3. Go to Downloads.
+4. Right-click on the file "g05-intro-git-and-github-team-2-main."
+5. Click on "Extract All."
+6. Choose the extracted file location.
+7. Go to the extracted file "g05-intro-git-and-github-team-2-main."
+8. Right-click the file.
+9. Click on "Properties."
+10. Under the "General" tab, copy the text next to "Location."
+11. Open the Command Line.
+12. Type (without double quotes): "cd <text you copied from earlier>."
+13. Lastly, type (without double quotes): "java -jar g05-intro-git-and-github-team-2.jar."
+14. Enjoy!
 
 ## HOW TO PLAY
 
