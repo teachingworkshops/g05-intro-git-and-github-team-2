@@ -10,7 +10,7 @@ public class Game {
     public static TreeNode tryTakeRing = new TreeNode("You walk up to the skeleton and attempt to take the ring. The skeleton suddenly awakens and raises its dagger, cutting you across your right shoulder. You are now injured. Enter 1 to attack the skeleton, 2 to continue past it.");
     public static TreeNode attackSkeleton = new TreeNode("You attack the skeleton. It crumbles under your blow, turning to dust. Only the red ring remains on the ground. Press 1 to collect it and continue forward.");
     public static TreeNode takeRing = new TreeNode("You grab the ring from the ground. You will now have the ability to cast a fireball during a fight. Enter 1 to continue");
-    public static TreeNode moveToStatueRoom = new TreeNode("You enter a room containing three different statues. The first is a dolphin, the second an eagle, and the third a snake. Each statue has a button in front of it, and a large lever sits to the right of the statues.");
+    public static TreeNode moveToStatueRoom = new TreeNode("You enter a room containing three different statues. The first is a dolphin, the second an eagle, and the third a snake. Each statue has a button in front of it, and a large lever sits to the right of the statues. Press 1 to continue.");
     public static TreeNode leverIncorrect = new TreeNode("Incorrect! A trap activates and you are killed by its arrow.");
     public static TreeNode leverCorrect = new TreeNode("You solved the puzzle! The middle statue turns and reveals a bright red healing potion. You are no longer injured! Enter 1 to continue");
     public static TreeNode backToStart = new TreeNode("The next path leads you back to the start of the labyrinth. Enter 1 to go right, enter 2 to go left.");
@@ -24,7 +24,7 @@ public class Game {
     public static TreeNode attackNotEmpower = new TreeNode("Your swing is too quick for the minotaur and you are able to injure it. However, it strikes back and you are injured. Enter 1 to try to run, 2 to attack again.");
     public static TreeNode tryToRun = new TreeNode("You try to run, but the minotaur attacks you again.");
     public static TreeNode attackAgain = new TreeNode("Although severely wounded, you are able to defeat the minotaur. Enter 1 to proceed");
-    public static TreeNode winFight = new TreeNode("Directly behind the throne is a chest filled with gold and a door that leads to the outside. ");
+    public static TreeNode winFight = new TreeNode("Directly behind the throne is a chest filled with gold and a door that leads to the outside. Press 1 to Finish the Game.");
 
 
     public static void main(String[] args) {
