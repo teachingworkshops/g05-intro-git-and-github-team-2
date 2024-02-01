@@ -15,14 +15,14 @@ Once on the GitHub repository:
 2. Click on "Download ZIP."
 3. Go to Downloads.
 4. Right-click on the file "g05-intro-git-and-github-team-2-main."
-5. Click on "Extract All."
+5. Extract the ZIP file
 6. Choose the extracted file location.
-7. Go to the extracted file "g05-intro-git-and-github-team-2-main."
+7. Go inside the extracted folder and find "g05-intro-git-and-github-team-2"
 8. Right-click the file.
 9. Click on "Properties."
 10. Under the "General" tab, copy the text next to "Location."
 11. Open the Command Line.
-12. Type (without double quotes): "cd <text you copied from earlier>."
+12. Type (without double quotes): "cd ***location you copied from earlier***" 
 13. Lastly, type (without double quotes): "java -jar g05-intro-git-and-github-team-2.jar."
 14. Enjoy!
 
