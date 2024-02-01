@@ -38,7 +38,7 @@ public class Game {
         // Run game
         buildTree();
         TreeNode curr = root;
-
+    
         while(curr != null) {
             System.out.println(curr.getText());
             
@@ -70,6 +70,7 @@ public class Game {
                 System.out.print("Congratulations, "+p.getName()+", you win!\n");
             }
            
+            
             curr = turn(p, curr, s);
             
         }
@@ -222,13 +223,14 @@ public class Game {
      * @param s Scanner for user input
      * @return Result node
      */
+    
     public static TreeNode turn(Player p, TreeNode curr, Scanner s) {
         if(curr.getChildren().size() == 0) {
             return null;
         }
 
         //System.out.println(curr.getText());
-
+       
         if(curr.getText().contains("injured")) {
             if(!curr.getText().contains("no longer")) {
                 if(p.hurt()) {
@@ -242,7 +244,7 @@ public class Game {
                 p.heal();
             }
         }
-
+       
         int choice = s.nextInt();
 
         while(choice < 1 || choice > curr.getChildren().size()) {
@@ -253,5 +255,6 @@ public class Game {
        
 
         return curr.getChildren().get(choice-1);
+    
     }
 }
