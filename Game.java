@@ -14,6 +14,7 @@ public class Game {
     public static TreeNode leverIncorrect = new TreeNode("Incorrect! A trap activates and you are killed by its arrow.");
     public static TreeNode leverCorrect = new TreeNode("You solved the puzzle! The middle statue turns and reveals a bright red healing potion. You are no longer injured! Enter 1 to continue");
     public static TreeNode backToStart = new TreeNode("The next path leads you back to the start of the labyrinth. Enter 1 to go right, enter 2 to go left.");
+    public static TreeNode alreadyVisited = new TreeNode("You've already explored everything this way, press 1 to return to the beginning of the maze.");
     public static TreeNode toChest = new TreeNode("You enter a room that is completely empty except for a chest in the center of the room. Enter 1 to open the chest, 2 to kick the chest");
     public static TreeNode openChest = new TreeNode("The chest was a mimic! It leaps and attacks you. You are now injured. Enter 1 to kick it.");
     public static TreeNode hitChest = new TreeNode("The kick shatters the mimic, leaving an orange potion within the scattered pieces of wood. Gain one potion of strength. Enter 1 to turn around and continue down the hallway.");
@@ -131,7 +132,10 @@ public class Game {
 
         // Back to Start
         backToStart.addAdjacent(toChest);
-        backToStart.addAdjacent(door);
+        backToStart.addAdjacent(alreadyVisited);
+
+        //Already Visited 
+        alreadyVisited.addAdjacent(backToStart);
 
         // Chest Room
         toChest.addAdjacent(openChest);
@@ -178,7 +182,7 @@ public class Game {
         Queue<Integer> qLeft = new LinkedBlockingQueue<Integer>();
         Queue<Integer> qMid = new LinkedBlockingQueue<Integer>();
         Queue<Integer> qRight = new LinkedBlockingQueue<Integer>();
-        int choice = 0;
+        int choice = s.nextInt();
 
         // Set queues
         qLeft.offer(1);
@@ -201,7 +205,7 @@ public class Game {
             }
             else if(choice == 2) {
                 qMid.offer(mid);
-                System.out.println(qMid.peek());
+                //System.out.println(qMid.peek());
                 mid = qMid.poll();
             }
             else if(choice == 3) {
